@@ -7,7 +7,7 @@
   <div class="column is-8 is-offset-2">
     <atm-withdrawal-form (withdraw)="onWithdraw($event)"></atm-withdrawal-form>
     <atm-withdrawal-result [withdrawalBreakdown]="withdrawalBreakdown"></atm-withdrawal-result>
-    <atm-withdrawal-error [error]="amountError"></atm-withdrawal-error>
+    <atm-error-message [error]="amountError"></atm-error-message>
     <!-- TODO add destroying session -->
   </div>
 </div>
