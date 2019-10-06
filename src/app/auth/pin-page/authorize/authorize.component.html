@@ -1,0 +1,25 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="field">
+    <label class="label">
+      PIN:
+    </label>
+    <div class="control">
+      <input
+        type="password"
+        class="input"
+        maxlength=4
+        [ngClass]="{'is-danger': pin.invalid && (pin.dirty || pin.touched)}"
+        formControlName="pin"
+        required
+      >
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="button is-link"
+    [disabled]="form.invalid"
+  >Authorize</button>
+</form>

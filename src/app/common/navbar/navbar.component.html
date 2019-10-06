@@ -1,0 +1,50 @@
+<nav
+  class="navbar is-light"
+  role="navigation"
+  aria-label="main navigation"
+>
+  <div class="navbar-brand">
+    <a
+      class="navbar-item"
+      [routerLink]="['']"
+    >
+      <h3 class="title is-4">Home</h3>
+    </a>
+    <small id="auth-state" class="navbar-item has-text-success" *ngIf="(state$ | async)?.token">
+      Authorized
+    </small>
+
+    <a
+      role="button"
+      class="navbar-burger burger"
+      [ngClass]="{ 'is-active': isBurgerMenuActive }"
+      aria-label="menu"
+      aria-expanded="false"
+      data-target="navbarBasicExample"
+      (click)="toggleBurger()"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div
+    id="navbarBasicExample"
+    class="navbar-menu"
+    [ngClass]="{ 'is-active': isBurgerMenuActive }"
+  >
+    <div class="navbar-start"></div>
+
+    <div class="navbar-end">
+      <a
+        class="navbar-item"
+        [routerLink]="['pin-auth']"
+      >Auth</a>
+      <a
+        class="navbar-item"
+        [routerLink]="['withdrawal']"
+      >Withdrawal</a>
+    </div>
+  </div>
+</nav>

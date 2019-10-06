@@ -1,0 +1,40 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="field">
+    <label class="label">
+      Amount
+    </label>
+    <div class="control">
+      <input
+        class="input"
+        [ngClass]="{
+          'is-danger': amount.invalid && (amount.dirty || amount.touched),
+          'is-success': amount.valid && (amount.dirty || amount.touched)
+        }"
+        type="number"
+        formControlName="amount"
+        required
+      >
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <label class="checkbox">
+        <input
+          type="checkbox"
+          class="checkbox"
+          formControlName="hideEmptyNotes"
+        >
+        Hide empty notes in results
+      </label>
+    </div>
+  </div>
+
+  <button
+    class="button is-link"
+    type="submit"
+    [disabled]="form.invalid"
+  >OK</button>
+</form>

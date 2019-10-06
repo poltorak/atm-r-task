@@ -1,0 +1,8 @@
+<section *ngIf="withdrawalBreakdown.length">
+  <h4 class="title is-4">Result:</h4>
+  <ul>
+    <li *ngFor="let item of withdrawalBreakdown">
+      ${{ item.note }} &times;{{ item.notesAmount }}
+    </li>
+  </ul>
+</section>

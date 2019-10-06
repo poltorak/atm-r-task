@@ -1,0 +1,12 @@
+<div class="columns">
+  <div class="column is-6 is-offset-3">
+    <h3 class="title is-3 is-centered">Withdrawal</h3>
+  </div>
+</div>
+<div class="columns">
+  <div class="column is-8 is-offset-2">
+    <atm-withdrawal-form (withdraw)="onWithdraw($event)"></atm-withdrawal-form>
+    <atm-withdrawal-result [withdrawalBreakdown]="withdrawalBreakdown"></atm-withdrawal-result>
+    <atm-withdrawal-error [error]="amountError"></atm-withdrawal-error>
+  </div>
+</div>
