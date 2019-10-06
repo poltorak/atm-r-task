@@ -6,6 +6,7 @@
 <div class="columns">
   <div class="column is-8 is-offset-2">
     <atm-authorize (authorize)="onAuthorize($event)"></atm-authorize>
+    <!-- TODO make is as dumb component -->
     <small
       class="help is-danger"
       *ngIf="error"
