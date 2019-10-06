@@ -1,4 +1,4 @@
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { StateService } from './state.service';
 
@@ -32,7 +32,7 @@ describe('StateService', () => {
     })
     .unsubscribe();
 
-    service.destroySession();
+    service.destroySessionAction();
     service.state$.subscribe(state => {
       expect(state.token).toBeNull();
     })

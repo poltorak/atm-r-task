@@ -10,7 +10,11 @@
     >
       <h3 class="title is-4">Home</h3>
     </a>
-    <small id="auth-state" class="navbar-item has-text-success" *ngIf="(state$ | async)?.token">
+    <small
+      id="auth-state"
+      class="navbar-item has-text-success"
+      *ngIf="(state$ | async)?.token"
+    >
       Authorized
     </small>
 
@@ -45,6 +49,16 @@
         class="navbar-item"
         [routerLink]="['withdrawal']"
       >Withdrawal</a>
+      <div
+        class="buttons"
+        *ngIf="(state$ | async)?.token"
+      >
+        <a
+          class="button navbar-item"
+          id="logout"
+          (click)="destroySession()"
+        >Log out</a>
+      </div>
     </div>
   </div>
 </nav>

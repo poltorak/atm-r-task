@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthState, StateService } from '../state.service';
 
@@ -10,7 +11,10 @@ export class NavbarComponent implements OnInit {
   public state$: Observable<AuthState>;
   public isBurgerMenuActive: boolean;
 
-  constructor(private stateService: StateService) {
+  constructor(
+    private stateService: StateService,
+    private router: Router
+    ) {
     this.isBurgerMenuActive = false;
     this.state$ = this.stateService.state$;
   }
@@ -19,6 +23,11 @@ export class NavbarComponent implements OnInit {
 
   public toggleBurger() {
     this.isBurgerMenuActive = !this.isBurgerMenuActive;
+  }
+
+  public destroySession() {
+    this.router.navigate(['']);
+    this.stateService.destroySessionAction();
   }
 
 }

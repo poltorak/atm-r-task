@@ -19,10 +19,6 @@ export class StateService {
     this.state$ = this._state.asObservable();
   }
 
-  private get state(): AuthState {
-    return this._state.getValue();
-  }
-
   private set state(data: AuthState) {
     this._state.next({ token: data.token });
   }
@@ -37,7 +33,7 @@ export class StateService {
     }
   }
 
-  public destroySession() {
+  public destroySessionAction() {
     this.state = { token: null };
   }
 }
