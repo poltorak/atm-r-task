@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthState, StateService } from '../state.service';
@@ -7,7 +7,7 @@ import { AuthState, StateService } from '../state.service';
   selector: 'atm-navbar',
   templateUrl: './navbar.component.html'
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   public state$: Observable<AuthState>;
   public isBurgerMenuActive: boolean;
 
@@ -18,9 +18,6 @@ export class NavbarComponent implements OnInit {
     this.isBurgerMenuActive = false;
     this.state$ = this.stateService.state$;
   }
-
-  // TODO check state should be in on init
-  public ngOnInit(): void { }
 
   public toggleBurger(): void {
     this.isBurgerMenuActive = !this.isBurgerMenuActive;
