@@ -1,11 +1,12 @@
 # Frontend
 
-Implentation of solution that simulate the delivery of notes when a client does a withdraw in a cash machine.
+Implentation of solution that simulates the delivery of notes when a client does a withdraw in a cash machine.
 Application has 2 views:
 * Authorization - View where user has to put PIN (0123 is valid pin, hardcoded just for task purpose)
 * Withdrawal view - View where authenticated user can put money they want to withdraw.
 
 ## Start project
+
 Run `yarn` inside project directory to install required dependencies
 
 ## Development server
