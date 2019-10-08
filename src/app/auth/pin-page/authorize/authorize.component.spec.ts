@@ -27,22 +27,20 @@ describe('AuthorizeComponent', () => {
   });
 
   it('should have disabled authorize button at the start', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    const button = compiled.querySelector('button[type="submit"]');
+    const button = fixture.debugElement.query(By.css('button[type="submit"]'));
 
-    expect(button.disabled).toBeTruthy();
+    expect(button.properties.disabled).toBeTruthy();
   });
 
   it('should set class "is-danger" when pin input is invalid', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    const input = compiled.querySelector('input');
+    const input = fixture.debugElement.query(By.css('input'));
     const pinControl = component.form.get('pin');
 
     pinControl.setValue('asd');
     pinControl.markAsTouched();
     fixture.detectChanges();
 
-    expect(input.classList.contains('is-danger')).toBe(true);
+    expect(input.nativeElement.classList.contains('is-danger')).toBe(true);
   });
 
   it('should call emit when valid form is submitted', () => {

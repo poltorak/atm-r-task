@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 
-const NOTES = [100, 50, 20, 10];
+const NOTES: readonly number[] = [100, 50, 20, 10];
 
 export class NoteUnavailableException extends Error {
-  constructor(message?) {
+  constructor(message?: string) {
     super(message);
     this.name = 'NoteUnavailableException';
   }
 }
 export class InvalidArgumentException extends Error {
-  constructor(message?) {
+  constructor(message?: string) {
     super(message);
     this.name = 'InvalidArgumentException';
   }
@@ -27,7 +27,7 @@ export interface NotesBreakdownResult {
 @Injectable()
 export class WithdrawService {
 
-  public getNotesBreakdown(amount?: number, options: NotesBreakDownOptions = {}) {
+  public getNotesBreakdown(amount?: number, options: NotesBreakDownOptions = {}): NotesBreakdownResult[] {
     if (amount === 0 || amount === null || amount === undefined) {
       return [];
     }
@@ -37,7 +37,7 @@ export class WithdrawService {
     return this.breakdownAmountToNotes(amount, options);
   }
 
-  private breakdownAmountToNotes(amount, options): NotesBreakdownResult[] {
+  private breakdownAmountToNotes(amount: number, options: NotesBreakDownOptions): NotesBreakdownResult[] {
     const breakdown = NOTES.reduce((acc, next) => {
       const lastAccElement = acc.slice(-1)[0];
       const notesAmount = Math.floor(lastAccElement.amountLeft / next);
@@ -55,7 +55,7 @@ export class WithdrawService {
     return breakdown;
   }
 
-  private validateAmount(amount?: number) {
+  private validateAmount(amount?: number): void {
     if (amount < 0) {
       throw new InvalidArgumentException();
     }

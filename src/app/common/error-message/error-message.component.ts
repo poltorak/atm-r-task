@@ -1,13 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'atm-error-message',
   templateUrl: './error-message.component.html',
 })
-export class ErrorMessageComponent implements OnInit {
+export class ErrorMessageComponent {
   @Input()
   public error: string;
-
-  public ngOnInit() { }
-
 }

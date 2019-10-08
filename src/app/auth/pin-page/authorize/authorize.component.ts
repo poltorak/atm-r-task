@@ -1,12 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthForm } from '../auth-form.interface';
 
 @Component({
   selector: 'atm-authorize',
   templateUrl: './authorize.component.html',
 })
-export class AuthorizeComponent implements OnInit {
+export class AuthorizeComponent {
   @Output()
   public authorize: EventEmitter<AuthForm>;
   public form: FormGroup;
@@ -22,13 +22,11 @@ export class AuthorizeComponent implements OnInit {
     });
   }
 
-  public ngOnInit() { }
-
-  public onSubmit() {
+  public onSubmit(): void {
     this.authorize.emit(this.form.value);
   }
 
-  get pin() {
+  get pin(): AbstractControl {
     return this.form.get('pin');
   }
 

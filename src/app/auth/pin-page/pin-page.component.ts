@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateService } from '../../common/state.service';
 import { AuthForm } from './auth-form.interface';
@@ -7,7 +7,7 @@ import { AuthForm } from './auth-form.interface';
   selector: 'atm-pin-page',
   templateUrl: './pin-page.component.html',
 })
-export class PinPageComponent implements OnInit {
+export class PinPageComponent {
   public error: string;
 
   constructor(
@@ -15,9 +15,7 @@ export class PinPageComponent implements OnInit {
     private router: Router
   ) {}
 
-  public ngOnInit() { }
-
-  public onAuthorize(data: AuthForm) {
+  public onAuthorize(data: AuthForm): void {
     this.error = '';
     try {
       this.authSerivce.authAction(data.pin.toString());

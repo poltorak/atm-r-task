@@ -1,17 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NotesBreakdownResult } from '../withdraw.service';
 
 @Component({
   selector: 'atm-withdrawal-result',
   templateUrl: './withdrawal-result.component.html',
 })
-export class WithdrawalResultComponent implements OnInit {
+export class WithdrawalResultComponent {
   @Input()
-  public withdrawalBreakdown: any[];
+  public withdrawalBreakdown: NotesBreakdownResult[];
 
   constructor() {
     this.withdrawalBreakdown = [];
   }
-
-  public ngOnInit() { }
-
 }

@@ -8,19 +8,19 @@ import { PinPageComponent } from './pin-page.component';
 describe('PinPageComponent', () => {
   let component: PinPageComponent;
   let fixture: ComponentFixture<PinPageComponent>;
-  let MockStateService;
-  let MockRouter;
+  let MockStateService: StateService;
+  let MockRouter: Router;
 
   beforeEach(async(() => {
     MockRouter = {
       navigate: jasmine.createSpy('navigate')
-    };
+    } as any as Router;
     MockStateService = {
       authAction: jasmine.createSpy('authAction')
         .withArgs('0123').and.callFake(() => {})
         .withArgs('invalid').and.throwError('Unauthorized')
         .withArgs('other_invalid').and.throwError('Unhandled error')
-    };
+    } as any as StateService;
     TestBed.configureTestingModule({
       declarations: [ PinPageComponent ],
       providers: [

@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { WithdrawService } from './withdraw.service';
+import { Component } from '@angular/core';
+import { NotesBreakdownResult, WithdrawService } from './withdraw.service';
 import { WithDrawalForm } from './withdrawal-form.interface';
 
 @Component({
   selector: 'atm-withdrawal',
   templateUrl: './withdrawal.component.html',
 })
-export class WithdrawalComponent implements OnInit {
-  public withdrawalBreakdown: Array<any>;
+export class WithdrawalComponent {
+  public withdrawalBreakdown: NotesBreakdownResult[];
   public amountError: string;
 
   constructor(
@@ -16,9 +16,7 @@ export class WithdrawalComponent implements OnInit {
     this.withdrawalBreakdown = [];
   }
 
-  public ngOnInit() { }
-
-  public onWithdraw(data: WithDrawalForm) {
+  public onWithdraw(data: WithDrawalForm): void {
     this.reset();
     // Simulating possibility that API returns error
     try {
@@ -28,7 +26,7 @@ export class WithdrawalComponent implements OnInit {
     }
   }
 
-  private reset() {
+  private reset(): void {
     this.withdrawalBreakdown = [];
     this.amountError = null;
   }

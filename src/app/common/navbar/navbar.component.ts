@@ -19,13 +19,14 @@ export class NavbarComponent implements OnInit {
     this.state$ = this.stateService.state$;
   }
 
-  public ngOnInit() { }
+  // TODO check state should be in on init
+  public ngOnInit(): void { }
 
-  public toggleBurger() {
+  public toggleBurger(): void {
     this.isBurgerMenuActive = !this.isBurgerMenuActive;
   }
 
-  public destroySession() {
+  public destroySession(): void {
     this.router.navigate(['']);
     this.stateService.destroySessionAction();
   }

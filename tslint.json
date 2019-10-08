@@ -52,7 +52,10 @@
       "timeEnd",
       "trace"
     ],
-    "no-empty": [true, "allow-empty-functions"],
+    "no-empty": [
+      true,
+      "allow-empty-functions"
+    ],
     "no-inferrable-types": [
       true,
       "ignore-params"
@@ -84,8 +87,22 @@
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
-    "no-consecutive-blank-lines": [true, 1],
-    "ban": [true, "fdescribe", "fit"]
+    "no-consecutive-blank-lines": [
+      true,
+      1
+    ],
+    "ban": [
+      true,
+      "fdescribe",
+      "fit"
+    ],
+    "typedef": [
+      true,
+      "call-signature",
+      "parameter",
+      "property-declaration",
+      "member-variable-declaration"
+    ]
   },
   "rulesDirectory": [
     "codelyzer"

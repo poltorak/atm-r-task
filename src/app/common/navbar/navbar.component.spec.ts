@@ -10,9 +10,9 @@ import { NavbarComponent } from './navbar.component';
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
-  let state$;
-  let MockStateService;
-  let MockRouter;
+  let state$: BehaviorSubject<{ token: string }>;
+  let MockStateService: StateService;
+  let MockRouter: Router;
 
   beforeEach(async(() => {
     state$ = new BehaviorSubject({ token: null });
@@ -20,7 +20,7 @@ describe('NavbarComponent', () => {
       state: state$,
       state$: state$.asObservable(),
       destroySessionAction: jasmine.createSpy('destroySessionAction')
-    };
+    } as any as StateService;
 
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
@@ -46,31 +46,28 @@ describe('NavbarComponent', () => {
   });
 
   it('should toggle isBurgerMenuActive on click on burger', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    const toggleButton = compiled.querySelector('.navbar-burger');
+    const toggleButton = fixture.debugElement.query(By.css('.navbar-burger'));
 
     expect(component.isBurgerMenuActive).toBe(false);
-    toggleButton.click();
+    toggleButton.triggerEventHandler('click', null);
     fixture.detectChanges();
     expect(component.isBurgerMenuActive).toBe(true);
   });
 
   it('should not display Authorize info when StateService.token is not provided', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    const authInfo = compiled.querySelector('#auth-state');
+    const authInfo = fixture.debugElement.query(By.css('#auth-state'));
     expect(authInfo).toBeNull();
   });
 
   it('should display Authorize info when StateService.token is provided', fakeAsync(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    const authInfo = compiled.querySelector('#auth-state');
+    const authInfo = fixture.debugElement.query(By.css('#auth-state'));
     expect(authInfo).toBeNull();
 
     state$.next({ token: '123' });
     tick();
     fixture.detectChanges();
-    const authInfoAfter = compiled.querySelector('#auth-state');
-    expect(authInfoAfter.textContent).toContain('Authorized');
+    const authInfoAfter = fixture.debugElement.query(By.css('#auth-state'));
+    expect(authInfoAfter.nativeElement.textContent).toContain('Authorized');
   }));
 
   it('should not display logout button when user is not authorized', () => {

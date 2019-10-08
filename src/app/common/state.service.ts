@@ -23,7 +23,7 @@ export class StateService {
     this._state.next({ token: data.token });
   }
 
-  public authAction(pin: string) {
+  public authAction(pin: string): void {
     const isNumerical = !!pin.match(/\d+/);
 
     if (isNumerical && pin === '0123') {
@@ -33,7 +33,7 @@ export class StateService {
     }
   }
 
-  public destroySessionAction() {
+  public destroySessionAction(): void {
     this.state = { token: null };
   }
 }
